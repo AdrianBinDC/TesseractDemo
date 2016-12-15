@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TesseractOCR
 
 class DetailViewController: UIViewController {
     
@@ -16,6 +17,13 @@ class DetailViewController: UIViewController {
     
     var labelString: String?
     var imageToScan: UIImage?
+    
+    /// This enum is used for Tesseract's initializer
+    
+    enum OCRLanguage: String {
+        case english = "eng"
+        case french = "fra"
+    }
 
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
@@ -23,7 +31,7 @@ class DetailViewController: UIViewController {
         label.text = labelString
         configureImageView()
         if let imageToScan = imageToScan {
-            scanImage(image: imageToScan)
+            scanImage(imageToScan)
         }
 
         // Do any additional setup after loading the view.
@@ -36,11 +44,31 @@ class DetailViewController: UIViewController {
         imageView.layer.borderColor = UIColor.red.cgColor
         imageView.layer.cornerRadius = 10.0
         imageView.contentMode = .scaleAspectFit
-    }
+    }
     
     // MARK: - OCR Methods
-    func scanImage(image: UIImage) {
-        // TODO: Fill this in
+    func scanImage(_ image: UIImage) {
+        guard imageToScan != nil else {
+            return
+        }
+        
+        // Do the work on the background queue so you don't lock up the UI
+        let backgroundQueue = DispatchQueue(label: "com.app.queue", qos: .background, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil)
+        
+        backgroundQueue.async {
+            // FIXME: At a later date, you'll need to update
+            if let tesseract = G8Tesseract(language: OCRLanguage.english.rawValue) {
+                tesseract.engineMode = .tesseractCubeCombined
+                tesseract.pageSegmentationMode = .auto
+                tesseract.delegate = self
+                tesseract.image = self.imageToScan!.g8_grayScale()
+                tesseract.recognize()
+                
+                DispatchQueue.main.async {
+                    self.textView.text = tesseract.recognizedText
+                }
+            }
+        }
     }
     
     
@@ -55,4 +83,10 @@ class DetailViewController: UIViewController {
     }
     */
 
+}
+
+extension DetailViewController: G8TesseractDelegate {
+    func progressImageRecognition(for tesseract: G8Tesseract!) {
+        print("Progress is \(tesseract.progress)")
+    }
 }

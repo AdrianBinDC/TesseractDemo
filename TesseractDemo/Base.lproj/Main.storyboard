@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fvn-ZN-B1c">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fvn-ZN-B1c">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -129,37 +129,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2CV-TA-Y6D">
-                                <rect key="frame" x="16" y="72" width="343" height="410"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YsB-zS-b93">
-                                <rect key="frame" x="16" y="519" width="343" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Zz3-72-xij"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lv-50-A6c">
-                                <rect key="frame" x="16" y="490" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="h38-Yq-lsS">
+                                <rect key="frame" x="16" y="72" width="343" height="587"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2CV-TA-Y6D">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="207"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="207" id="ljg-DK-MeV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lv-50-A6c">
+                                        <rect key="frame" x="0.0" y="215" width="343" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Ta0-KE-FKc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YsB-zS-b93">
+                                        <rect key="frame" x="0.0" y="244" width="343" height="343"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2CV-TA-Y6D" firstAttribute="top" secondItem="v1r-Fw-Eoq" secondAttribute="bottom" constant="8" symbolic="YES" id="6AD-S5-4Xn"/>
-                            <constraint firstItem="6lv-50-A6c" firstAttribute="leading" secondItem="YsB-zS-b93" secondAttribute="leading" id="7pi-OS-gBf"/>
-                            <constraint firstItem="2CV-TA-Y6D" firstAttribute="trailing" secondItem="Nb9-Cv-dg5" secondAttribute="trailingMargin" id="AUt-e4-RoU"/>
-                            <constraint firstItem="2CV-TA-Y6D" firstAttribute="leading" secondItem="Nb9-Cv-dg5" secondAttribute="leadingMargin" id="BA2-yi-Jo8"/>
-                            <constraint firstItem="2CV-TA-Y6D" firstAttribute="trailing" secondItem="6lv-50-A6c" secondAttribute="trailing" id="KJ4-rU-5Al"/>
-                            <constraint firstItem="2CV-TA-Y6D" firstAttribute="leading" secondItem="6lv-50-A6c" secondAttribute="leading" id="dSb-MC-DsB"/>
-                            <constraint firstItem="6lv-50-A6c" firstAttribute="trailing" secondItem="YsB-zS-b93" secondAttribute="trailing" id="fT0-3m-tDs"/>
-                            <constraint firstItem="YsB-zS-b93" firstAttribute="top" secondItem="6lv-50-A6c" secondAttribute="bottom" constant="8" symbolic="YES" id="uNp-ba-Lx0"/>
-                            <constraint firstItem="6lv-50-A6c" firstAttribute="top" secondItem="2CV-TA-Y6D" secondAttribute="bottom" constant="8" symbolic="YES" id="zLu-0q-oxd"/>
-                            <constraint firstAttribute="bottom" secondItem="YsB-zS-b93" secondAttribute="bottom" constant="20" symbolic="YES" id="zOs-zy-Dv5"/>
+                            <constraint firstItem="h38-Yq-lsS" firstAttribute="trailing" secondItem="Nb9-Cv-dg5" secondAttribute="trailingMargin" id="Kp8-mC-lLt"/>
+                            <constraint firstItem="h38-Yq-lsS" firstAttribute="top" secondItem="v1r-Fw-Eoq" secondAttribute="bottom" constant="8" id="aFq-2x-Yry"/>
+                            <constraint firstItem="h38-Yq-lsS" firstAttribute="leading" secondItem="Nb9-Cv-dg5" secondAttribute="leadingMargin" id="aJd-la-vgJ"/>
+                            <constraint firstItem="pzs-Ug-2l3" firstAttribute="top" secondItem="h38-Yq-lsS" secondAttribute="bottom" constant="8" id="kQt-iK-w65"/>
                         </constraints>
                     </view>
                     <connections>

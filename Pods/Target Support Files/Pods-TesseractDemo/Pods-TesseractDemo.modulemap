@@ -1,0 +1,6 @@
+framework module Pods_TesseractDemo {
+  umbrella header "Pods-TesseractDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
